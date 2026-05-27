@@ -1,0 +1,1 @@
+Read .AI/PROJECT.md for context and .AI/GOAL.md for the current objective. Search the internet, your training data, or relevant documentation for API references, best practices, and example code required to implement this specific feature. Synthesize this information and write it into .AI/DOC.md.

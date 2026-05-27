@@ -1,0 +1,1 @@
+Based on the upcoming implementation in .AI/PLAN.md and .AI/MILESTONES.md, create a post-implementation cleanup plan in .AI/CLEANUP.md. Include tasks to: review and modularize large files, remove temporary debug logs, standardise naming conventions, and finally, instructions to empty .AI/GOAL.md to signify full completion.

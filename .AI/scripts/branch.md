@@ -1,0 +1,1 @@
+Analyze the scope of the new feature described in .AI/GOAL.md. If the change is significant or touches core systems, create and checkout a new git branch named feature/<feature-name>. If it is a minor tweak, stay on the current branch. Execute the git command and confirm the branch we are on.

@@ -1,0 +1,1 @@
+Based on .AI/GOAL.md, .AI/PROJECT.md, and the technical context in .AI/DOC.md, generate a comprehensive technical plan to achieve the goal. Outline the architectural approach, which files need to be created, and which files will be modified. Save this detailed strategy to .AI/PLAN.md.

@@ -1,0 +1,1 @@
+Read .AI/PLAN.md. Break the implementation plan down into sequential milestones. CRITICAL: Each milestone must be self-contained. If we stop at the end of any milestone, the project MUST be in a fully working, compilable, and runnable state without breaking existing features. Save these steps to .AI/MILESTONES.md.

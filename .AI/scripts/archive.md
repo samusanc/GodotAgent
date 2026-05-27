@@ -1,0 +1,1 @@
+Read .AI/GOAL.md. Create a new folder in .AI/archive/ named after a summarized version of the current goal. Move the current GOAL.md, PLAN.md, MILESTONES.md, DOC.md, TESTS.md, and CLEANUP.md into this new folder. Finally, create fresh, blank versions of these 6 files in the .AI/ root directory so we are ready for a new feature.
