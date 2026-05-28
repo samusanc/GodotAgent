@@ -1,17 +1,20 @@
-# Milestones - Visual Map Viewer & WASD Movement
+# Milestones - 3D Map Viewer & Platform Controller
 
 Each milestone keeps the project in a working state.
 
-## Milestone 1: Create GridVisualizer helper
-- Create `res://level/grid_visualizer.gd`.
-- Implement dynamic `ColorRect` spawning.
+## Milestone 1: Implement GridVisualizer3D
+- Create `res://level/grid_visualizer_3d.gd`.
+- Generate 3D wall collision boxes and floor meshes dynamically.
 
-## Milestone 2: Create MapViewer glue script
-- Create `res://level/map_viewer.gd`.
-- Connect simulation signals, handle W/A/S/D and Up/Down/Left/Right keys, and write real-time logs to the UI.
+## Milestone 2: Implement Player3D Controller
+- Create `res://player/player_3d.gd`.
+- Setup simple walking physics and vertical gravity under 50 lines.
 
-## Milestone 3: Create MapViewer scene
-- Create `res://level/map_viewer.tscn` text representation mapping all nodes.
+## Milestone 3: Implement PlatformController
+- Create `res://level/platform_controller.gd`.
+- Handle UI button holds to drive simulation ticks and synchronize the 3D platform position and rotation.
 
-## Milestone 4: Verification & Push
-- Rebuild editor cache, verify compilation, run existing headless tests, and push branches.
+## Milestone 4: Setup MapViewer3D Scene & Run Tests
+- Create `res://level/map_viewer_3d.tscn`.
+- Update project startup configuration.
+- Check GDScript syntax and run automated tests.

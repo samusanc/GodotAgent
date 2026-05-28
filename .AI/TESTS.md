@@ -1,24 +1,27 @@
-# Tests - Visual Map Viewer & WASD Movement
+# Tests - 3D Map Viewer & Platform Controller
 
 Testing strategy.
 
-## Milestone 1: Create GridVisualizer helper
+## Milestone 1: Implement GridVisualizer3D
 - AI-Friendly:
-  - Check syntax:
-    `/home/samusanc/Downloads/godot --headless --check-only --script project/level/grid_visualizer.gd`
+  - Check script syntax:
+    `/home/samusanc/Downloads/godot --headless --check-only --script project/level/grid_visualizer_3d.gd`
 
-## Milestone 2: Create MapViewer glue script
+## Milestone 2: Implement Player3D Controller
 - AI-Friendly:
-  - Check syntax:
-    `/home/samusanc/Downloads/godot --headless --check-only --script project/level/map_viewer.gd`
+  - Check script syntax:
+    `/home/samusanc/Downloads/godot --headless --check-only --script project/player/player_3d.gd`
 
-## Milestone 3: Create MapViewer scene
+## Milestone 3: Implement PlatformController
 - AI-Friendly:
-  - Confirm the `.tscn` file exists.
+  - Check script syntax:
+    `/home/samusanc/Downloads/godot --headless --check-only --script project/level/platform_controller.gd`
 
-## Milestone 4: Verification & Push
+## Milestone 4: Setup MapViewer3D Scene & Run Tests
 - AI-Friendly:
-  - Run the test suite:
+  - Verify that the test runner passes successfully:
     `/home/samusanc/Downloads/godot --headless --script res://systems/test_runner.gd`
 - Human-Only:
-  - Run the scene inside Godot Editor visually: press WASD keys and check player movement, walls collision block, and trigger activation messages overlaying the canvas.
+  - Launch the game inside Godot Editor.
+  - Verify 3D player moves on the platform using WASD/Arrow keys.
+  - Verify clicking and holding UI screen buttons (Forward, Left, Right) steers the platform smoothly through the 3D maze.

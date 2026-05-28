@@ -1,33 +1,35 @@
-# Documentation - Continuous 2D Movement & Rotational steering
+# Documentation - Godot 4 3D Physics & Movement
 
-## Direction Vector from Angle
-In Godot, to obtain a directional movement vector from an angle in radians:
+## CharacterBody3D Player Controller
+To move a player character in 3D:
 ```gdscript
-var direction := Vector2.from_angle(angle)
+var velocity := Vector3.ZERO
+var input := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+var dir := (global_transform.basis * Vector3(input.x, 0, input.y)).normalized()
+velocity.x = dir.x * speed
+velocity.z = dir.z * speed
+if not is_on_floor():
+    velocity.y -= gravity * delta
+move_and_slide()
 ```
 
-## Continuous Movement Integration
-Instead of handling discrete input events, continuous movement updates inside `_physics_process(delta)`:
-```gdscript
-# Inside MapSimulation tick/update function:
-var velocity := Vector2.from_angle(player_angle) * speed * move_input
-var target_pos := player_position + velocity * delta
-```
+## AnimatableBody3D for Moving Platforms
+In Godot 4, `AnimatableBody3D` is the recommended node for physics-controlled moving platforms.
+- It automatically handles carrying and rotating `CharacterBody3D` nodes standing on top of it.
+- Set its position and rotation in `_physics_process(delta)` to move the platform smoothly in sync with physics:
+  ```gdscript
+  global_position = target_position
+  global_rotation.y = target_angle
+  ```
 
-## Mapping Position to Grid Cells
-To check collisions and triggers against the grid:
+## Dynamic 3D Collision Shapes
+To create collidable 3D blocks programmatically:
 ```gdscript
-var cell_x := int(floor(position.x / tile_size))
-var cell_y := int(floor(position.y / tile_size))
-var cell := Vector2i(cell_x, cell_y)
-```
-
-## Polling Keyboard Inputs
-For real-time player inputs:
-```gdscript
-var turn := 0.0
-if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-    turn -= 1.0
-if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-    turn += 1.0
+var static_body := StaticBody3D.new()
+var collision := CollisionShape3D.new()
+var shape := BoxShape3D.new()
+shape.size = Vector3(size, size, size)
+collision.shape = shape
+static_body.add_child(collision)
+# Also add a MeshInstance3D to visualize
 ```

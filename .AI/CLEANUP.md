@@ -1,12 +1,12 @@
-# Cleanup Plan - Continuous Movement
+# Cleanup Plan - 3D Map Viewer & Platform Controller
 
 Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm all GDScript files (`map_data.gd`, `map_parser.gd`, `map_simulation.gd`, `map_viewer.gd`, `test_runner.gd`) are under 50 lines.
+- Confirm all script files (`grid_visualizer_3d.gd`, `player_3d.gd`, and `platform_controller.gd`) are under 50 lines.
 
 ## Documentation Update
-- Document continuous movement mechanics and updated JSON config properties in `.AI/PROJECT.md`.
+- Update `.AI/PROJECT.md` to document the 3D player controller, moving platform system, and 3D visual scene.
 
 ## Goal Completion
 - Empty `.AI/GOAL.md`.
