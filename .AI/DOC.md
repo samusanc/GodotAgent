@@ -1,35 +1,31 @@
-# Documentation - Godot 4 3D Physics & Movement
+# Documentation - Godot 4 UI Anchoring & Layouts
 
-## CharacterBody3D Player Controller
-To move a player character in 3D:
-```gdscript
-var velocity := Vector3.ZERO
-var input := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-var dir := (global_transform.basis * Vector3(input.x, 0, input.y)).normalized()
-velocity.x = dir.x * speed
-velocity.z = dir.z * speed
-if not is_on_floor():
-    velocity.y -= gravity * delta
-move_and_slide()
-```
+To ensure Control nodes stay visible across different window sizes and resolutions, they must use Godot's anchor properties instead of absolute coordinates.
 
-## AnimatableBody3D for Moving Platforms
-In Godot 4, `AnimatableBody3D` is the recommended node for physics-controlled moving platforms.
-- It automatically handles carrying and rotating `CharacterBody3D` nodes standing on top of it.
-- Set its position and rotation in `_physics_process(delta)` to move the platform smoothly in sync with physics:
+## Anchor Presets
+
+- **Bottom-Left (Preset 2)**:
   ```gdscript
-  global_position = target_position
-  global_rotation.y = target_angle
+  anchor_left = 0.0
+  anchor_top = 1.0
+  anchor_right = 0.0
+  anchor_bottom = 1.0
+  grow_vertical = 0 # grows upwards
+  ```
+- **Bottom-Right (Preset 3)**:
+  ```gdscript
+  anchor_left = 1.0
+  anchor_top = 1.0
+  anchor_right = 1.0
+  anchor_bottom = 1.0
+  grow_horizontal = 0 # grows leftwards
+  grow_vertical = 0 # grows upwards
   ```
 
-## Dynamic 3D Collision Shapes
-To create collidable 3D blocks programmatically:
-```gdscript
-var static_body := StaticBody3D.new()
-var collision := CollisionShape3D.new()
-var shape := BoxShape3D.new()
-shape.size = Vector3(size, size, size)
-collision.shape = shape
-static_body.add_child(collision)
-# Also add a MeshInstance3D to visualize
-```
+## Offsets relative to Anchors
+When anchors are set to a corner, the `offset_*` properties are relative to that corner. E.g., for bottom-right:
+- `offset_left = -220.0` (starts 220 pixels left of the right edge)
+- `offset_top = -140.0` (starts 140 pixels above the bottom edge)
+- `offset_right = -20.0` (ends 20 pixels left of the right edge)
+- `offset_bottom = -20.0` (ends 20 pixels above the bottom edge)
+This guarantees a margin of 20 pixels from the corner.

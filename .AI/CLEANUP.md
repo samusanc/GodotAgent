@@ -1,12 +1,9 @@
-# Cleanup Plan - 3D Map Viewer & Platform Controller
+# Cleanup Plan - UI Layout Fix & Backward Movement
 
 Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm all script files (`grid_visualizer_3d.gd`, `player_3d.gd`, and `platform_controller.gd`) are under 50 lines.
-
-## Documentation Update
-- Update `.AI/PROJECT.md` to document the 3D player controller, moving platform system, and 3D visual scene.
+- Confirm `platform_controller.gd` is under 50 lines.
 
 ## Goal Completion
 - Empty `.AI/GOAL.md`.

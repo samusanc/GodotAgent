@@ -1,25 +1,15 @@
-# Technical Plan - 3D Map Viewer & Platform Controller
+# Technical Plan - UI Layout Fix & Backward Movement
 
-We will create a 3D level viewer with a playable 3D character and a steering platform.
+We will refactor the UI anchoring in the 3D scene and add the backward movement controls.
 
-## Proposed Components
+## Plan Details
 
-1. **`res://level/grid_visualizer_3d.gd`**
-   - Instantiates collidable 3D block meshes for wall tiles ('1') and overlays floor colliders/meshes for walkable tiles ('0').
-   - Uses `MeshInstance3D` with `BoxMesh` and `StaticBody3D` for collision.
-   - Max 50 lines.
-
-2. **`res://player/player_3d.gd`**
-   - Controls a `CharacterBody3D` standing on top of the platform.
-   - Listens to W/A/S/D or Arrow keys.
-   - Handles gravity and standard walking.
-   - Max 50 lines.
-
-3. **`res://level/platform_controller.gd`**
-   - Interacts with `MapSimulation`.
-   - References the UI buttons for steering.
-   - Updates the platform's `AnimatableBody3D` position and rotation in 3D.
-   - Max 50 lines.
-
-4. **`res://level/map_viewer_3d.tscn`**
-   - 3D environment scene containing lighting, camera, grid visualizer target, the AnimatableBody3D platform, the player CharacterBody3D, and the Control UI buttons.
+1. **`project/level/map_viewer_3d.tscn`**:
+   - Re-arrange `SteeringPanel` and `DebugLabel` using proper anchors (preset 2 and 3).
+   - Add a `BackwardButton` to the `SteeringPanel` Control node tree.
+2. **`project/level/platform_controller.gd`**:
+   - Reference `BackwardButton` via `@onready var backward_btn: Button = $UILayer/SteeringPanel/BackwardButton`.
+   - Update `_physics_process(delta)` to poll `backward_btn.is_pressed()` and decrement `move_input` when pressed (e.g. `move_input -= 1.0`).
+   - Check file size limit is kept under 50 lines.
+3. **Verification**:
+   - Re-check GDScript compilation and run regression tests.

@@ -20,7 +20,7 @@ The standard folders are structured as follows:
   - `res://shared/materials/` - Pre-configured `.tres` material files (StandardMaterial3D, ShaderMaterial).
   - `res://shared/shaders/` - Custom shader scripts (`.gdshader`).
 - `res://level/` - Level features, setups, and level scenes.
-  - `res://level/map_viewer_3d.tscn` - Visual 3D scene displaying collidable walls, floor, and playable platform.
+  - `res://level/map_viewer_3d.tscn` - Visual 3D scene displaying collidable walls, floor, and playable platform. Includes anchored bottom-left debug panel and bottom-right steering panel with Up, Down, Left, and Right buttons.
   - `res://level/platform_controller.gd` - Glue script to update 3D platform position/rotation and process UI button controls.
   - `res://level/grid_visualizer_3d.gd` - Helper class to draw 3D wall blocks and ground planes.
 - `res://player/` - Player logic, assets, and scenes.

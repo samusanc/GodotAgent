@@ -1,27 +1,21 @@
-# Tests - 3D Map Viewer & Platform Controller
+# Tests - UI Layout Fix & Backward Movement
 
 Testing strategy.
 
-## Milestone 1: Implement GridVisualizer3D
+## Milestone 1: Refactor UI Scene Layout
 - AI-Friendly:
-  - Check script syntax:
-    `/home/samusanc/Downloads/godot --headless --check-only --script project/level/grid_visualizer_3d.gd`
+  - Verify that the `map_viewer_3d.tscn` file exists.
 
-## Milestone 2: Implement Player3D Controller
+## Milestone 2: Update PlatformController
 - AI-Friendly:
-  - Check script syntax:
-    `/home/samusanc/Downloads/godot --headless --check-only --script project/player/player_3d.gd`
-
-## Milestone 3: Implement PlatformController
-- AI-Friendly:
-  - Check script syntax:
+  - Check GDScript syntax:
     `/home/samusanc/Downloads/godot --headless --check-only --script project/level/platform_controller.gd`
 
-## Milestone 4: Setup MapViewer3D Scene & Run Tests
+## Milestone 3: Verification
 - AI-Friendly:
-  - Verify that the test runner passes successfully:
+  - Run the test suite:
     `/home/samusanc/Downloads/godot --headless --script res://systems/test_runner.gd`
 - Human-Only:
-  - Launch the game inside Godot Editor.
-  - Verify 3D player moves on the platform using WASD/Arrow keys.
-  - Verify clicking and holding UI screen buttons (Forward, Left, Right) steers the platform smoothly through the 3D maze.
+  - Run the 3D scene.
+  - Verify the debug panel (bottom-left) and the button steering pad (bottom-right) appear correctly on screen.
+  - Verify clicking and holding "Down" moves the platform backward.
