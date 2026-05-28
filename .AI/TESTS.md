@@ -1,23 +1,29 @@
-# Tests - Standard Godot Folders
+# Tests - Map Parser & Simulation
 
-Testing strategy for each milestone.
+Verification strategy for the milestones.
 
-## Milestone 1: Create Folder Structure and .gitkeep files
+## Milestone 1: Setup Assets and Resources
+- AI-Friendly:
+  - Check file existence of `project/map-example.txt`, `project/map-config.json`.
+  - Check GDScript syntax:
+    `godot --headless --check-only --script project/resources/trigger_data.gd`
+    `godot --headless --check-only --script project/resources/map_data.gd`
 
-### AI-Friendly Tests
-- Run `test -d project/systems`
-- Run `test -d project/autoload`
-- Run `test -d project/resources`
-- Run `test -d project/shared`
-- Run `test -f project/systems/.gitkeep`
-- Run `test -f project/autoload/.gitkeep`
-- Run `test -f project/resources/.gitkeep`
-- Run `test -f project/shared/.gitkeep`
+## Milestone 2: Implement MapParser
+- AI-Friendly:
+  - Check GDScript syntax:
+    `godot --headless --check-only --script project/systems/map_parser.gd`
 
-### Human-Only Tests
-- Verify project folders show up correctly in Godot Editor FileSystem dock.
+## Milestone 3: Implement MapSimulation
+- AI-Friendly:
+  - Check GDScript syntax:
+    `godot --headless --check-only --script project/systems/map_simulation.gd`
 
-## Milestone 2: Verification
-
-### AI-Friendly Tests
-- Run `git status` to verify the new files are staged or ready to commit.
+## Milestone 4: Automated Testing & Verification
+- AI-Friendly:
+  - Run the test runner:
+    `godot --headless --script project/systems/test_runner.gd`
+  - Verify that the simulation correctly:
+    1. Blocks movement into wall cells ('1').
+    2. Allows movement in path cells ('0').
+    3. Triggers signals/events when entering trigger coordinates.

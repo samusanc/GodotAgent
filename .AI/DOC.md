@@ -1,11 +1,52 @@
-# Folder Layout Documentation
+# Documentation - Map Parsing APIs
 
-As specified in `GEMINI.md` and `.gemini/rules/godot-architecture.md`, the standard layout inside the Godot project is:
+## File I/O in Godot 4.x
 
-- `res://systems/` - Reusable Lego-brick scripts (no project-specific code, e.g., `health.gd`, `mover.gd`).
-- `res://autoload/` - Global managers (small, specialized, < 50 lines, e.g., `event_bus.gd`).
-- `res://resources/` - Shared Resource data (`.tres`) and Resource scripts (`.gd`).
-- `res://shared/` - Cross-feature assets (sprites, audio, fonts).
-- `res://<feature>/` - Feature folders containing scene + glue script + local data (e.g., `res://player/player.tscn`, `res://player/player.gd`).
+To read a file line-by-line at runtime:
+```gdscript
+var file := FileAccess.open(path, FileAccess.READ)
+if file:
+    while not file.eof_reached():
+        var line := file.get_line().strip_edges()
+        if line.is_empty():
+            continue
+        # Process line
+```
 
-To prevent Git from ignoring empty folders, we will create a placeholder `.gitkeep` file in each directory.
+## String Parsing
+
+- Check prefixes: `line.begins_with("config:")`
+- Splitting strings: `line.split(" ")` or `line.split(",")`
+- Converting to integers: `int(string_val)`
+- Vector2i construction: `Vector2i(x, y)`
+
+## Custom Resources
+
+Custom resource scripts must have a `class_name` and inherit from `Resource` to be type-safe:
+```gdscript
+# trigger_data.gd
+class_name TriggerData
+extends Resource
+
+@export var name: String = ""
+@export var start: Vector2i = Vector2i.ZERO
+@export var end: Vector2i = Vector2i.ZERO
+```
+
+```gdscript
+# map_data.gd
+class_name MapData
+extends Resource
+
+@export var width: int = 0
+@export var height: int = 0
+@export var grid: Array[Array] = [] # 2D array of ints: 1 = block, 0 = transitable
+@export var player_start: Vector2i = Vector2i.ZERO
+@export var triggers: Array[TriggerData] = []
+```
+*(Note: Godot 4 arrays of arrays can be represented as `Array[Array]`, but since nested typed arrays are tricky in some Godot versions, `Array` or a flattened 1D array of size `width * height` is often safer and easier. Let's use a 1D typed array `Array[int]` of size `width * height`, which can be accessed using `x + y * width`. This is robust and fully supported. Let's export `grid: Array[int]`.)*
+
+## Grid & Collision representation
+
+A custom `MapModel` or `MapSimulation` can track the active map state.
+- Is cell transitable: `func is_transitable(cell: Vector2i) -> bool` returns true if cell coordinates are within bounds and the cell value in `grid` is 0.

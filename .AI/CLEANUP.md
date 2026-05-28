@@ -1,14 +1,14 @@
-# Cleanup Plan
+# Cleanup Plan - Map Parser & Simulation
 
-Post-implementation tasks to clean up:
+Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm no extra/temporary folders or files were created.
-- Confirm all created folders conform to the naming conventions (all lowercase/snake_case).
-- Standardize naming conventions.
+- Confirm all new scripts are formatted with `gdformat` and linted with `gdlint`.
+- Confirm all code files conform to the 50-line limit.
+- Clean up any temporary debug prints.
 
 ## Documentation Update
-- Confirm `.AI/PROJECT.md` is updated with the folder structure context.
+- Document the `MapData` schema and `MapParser` API in `.AI/PROJECT.md`.
 
 ## Goal Completion
-- Empty `.AI/GOAL.md` to signify that this goal is completed.
+- Empty `.AI/GOAL.md` to indicate full completion.
