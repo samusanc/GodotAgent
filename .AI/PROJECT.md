@@ -20,6 +20,9 @@ The standard folders are structured as follows:
   - `res://shared/materials/` - Pre-configured `.tres` material files (StandardMaterial3D, ShaderMaterial).
   - `res://shared/shaders/` - Custom shader scripts (`.gdshader`).
 - `res://level/` - Level features, setups, and level scenes.
+  - `res://level/map_viewer.tscn` - Visual scene for testing grid map and player movement.
+  - `res://level/map_viewer.gd` - Glue script to update visual representation and handle WASD/Arrow input.
+  - `res://level/grid_visualizer.gd` - Helper class to draw colored ColorRect tiles for path, walls, and trigger zones.
 - `res://player/` - Player logic, assets, and scenes.
 
 ## Map Parsing & Simulation System

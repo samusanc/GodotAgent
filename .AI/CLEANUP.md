@@ -1,12 +1,12 @@
-# Cleanup Plan - Game Assets Directory Setup
+# Cleanup Plan - Visual Map Viewer & WASD Movement
 
 Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm all new folders contain `.gitkeep` and are empty otherwise.
+- Confirm all script files (`grid_visualizer.gd` and `map_viewer.gd`) are under 50 lines.
 
 ## Documentation Update
-- Confirm `.AI/PROJECT.md` is updated.
+- Document the visual map viewer scene in `.AI/PROJECT.md`.
 
 ## Goal Completion
-- Empty `.AI/GOAL.md` to indicate full completion.
+- Empty `.AI/GOAL.md`.

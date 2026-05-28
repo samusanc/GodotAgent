@@ -1,16 +1,23 @@
-# Technical Plan - Game Assets Directory Setup
+# Technical Plan - Visual Map Viewer & WASD Movement
 
-We will create standard asset and shader folders in the project directory.
+We will create a map viewer feature.
 
-## Implementation Steps
+## Components to Create
 
-1. Create directories:
-   - `project/shared/models/`
-   - `project/shared/textures/`
-   - `project/shared/materials/`
-   - `project/shared/shaders/`
-   - `project/scenes/`
-2. Write `.gitkeep` files in each.
-3. Verify they exist and are correctly tracked.
-4. Update `.AI/PROJECT.md` to document the layout.
-5. Provide a summary explanation of the directory structures.
+1. **`res://level/grid_visualizer.gd`**
+   - Static function to iterate through the map grid and spawn colored `ColorRect` tiles under a parent node.
+   - Highlights cells belonging to triggers.
+   - Max 50 lines.
+
+2. **`res://level/map_viewer.gd`**
+   - Glue script for the scene.
+   - Loads the map, handles user keyboard input (WASD/Arrows), updates the player icon position, and updates debug text.
+   - Max 50 lines.
+
+3. **`res://level/map_viewer.tscn`**
+   - Text scene containing Node2D structure with `TileContainer`, `PlayerIcon`, and a `CanvasLayer` containing a `DebugLabel`.
+
+## Execution
+- Check script syntax and run test runner.
+- Perform a manual check of the scene.
+- Push everything.
