@@ -34,7 +34,9 @@ The map configurations are stored as formal JSON under `res://map-config.json` (
 Example schema:
 ```json
 {
-  "player_start": [0, 0],
+  "player_start": [5.5, 1.5],
+  "speed": 96.0,
+  "tile_size": 32.0,
   "triggers": [
     {
       "name": "trigger1",
@@ -47,8 +49,8 @@ Example schema:
 
 ### Custom Resources
 - **`TriggerData`** (`res://resources/trigger_data.gd`): Stores trigger name, start coordinate, and end coordinate. Includes `contains_cell(cell)` boundary checking.
-- **`MapData`** (`res://resources/map_data.gd`): Stores grid dimensions, 1D grid representation (1 for non-walkable blocks, 0 for walkable cells), player start position, and list of `TriggerData`. Includes bounds and cell lookup helpers.
+- **`MapData`** (`res://resources/map_data.gd`): Stores grid dimensions, 1D grid representation (1 for non-walkable blocks, 0 for walkable cells), player start position (decimal Vector2), speed (float), tile_size (float), and list of `TriggerData`. Includes bounds and cell lookup helpers.
 
 ### Reusable Systems
 - **`MapParser`** (`res://systems/map_parser.gd`): Reads map `.txt` files containing grid data and config file paths, parses the formal JSON configurations, and returns a populated `MapData` resource.
-- **`MapSimulation`** (`res://systems/map_simulation.gd`): Manages player movement inside the grid, prevents moving onto `1` cells, and emits signals for player movement and trigger activation.
+- **`MapSimulation`** (`res://systems/map_simulation.gd`): Manages player movement inside the grid, using continuous decimal-based coordinates (`player_position`) and rotation angles (`player_angle`). Pre-calculates movement vectors relative to steering angles and checks boundaries and grid block collisions based on `floor(pos / tile_size)`.

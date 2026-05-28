@@ -1,31 +1,33 @@
-# Documentation - Godot 2D Visualization & Inputs
+# Documentation - Continuous 2D Movement & Rotational steering
 
-## Input Event Handling
-In Godot 4, raw keys can be detected in `_unhandled_input(event)`:
+## Direction Vector from Angle
+In Godot, to obtain a directional movement vector from an angle in radians:
 ```gdscript
-func _unhandled_input(event: InputEvent) -> void:
-    if event is InputEventKey and event.pressed and not event.is_echo():
-        match event.keycode:
-            KEY_W: # Up
-            KEY_A: # Left
-            KEY_S: # Down
-            KEY_D: # Right
+var direction := Vector2.from_angle(angle)
 ```
 
-## Instantiating ColorRect Dynamically
-To draw simple blocks on screen:
+## Continuous Movement Integration
+Instead of handling discrete input events, continuous movement updates inside `_physics_process(delta)`:
 ```gdscript
-var rect := ColorRect.new()
-rect.size = Vector2(30, 30)
-rect.position = Vector2(x * 32, y * 32)
-rect.color = Color.GRAY
-add_child(rect)
+# Inside MapSimulation tick/update function:
+var velocity := Vector2.from_angle(player_angle) * speed * move_input
+var target_pos := player_position + velocity * delta
 ```
 
-## CanvasLayer Debug Text
-A `CanvasLayer` allows displaying HUD elements independent of the game camera:
+## Mapping Position to Grid Cells
+To check collisions and triggers against the grid:
 ```gdscript
-# UILayer (CanvasLayer)
-# └── DebugLabel (Label)
-$UILayer/DebugLabel.text = "Debug Info"
+var cell_x := int(floor(position.x / tile_size))
+var cell_y := int(floor(position.y / tile_size))
+var cell := Vector2i(cell_x, cell_y)
+```
+
+## Polling Keyboard Inputs
+For real-time player inputs:
+```gdscript
+var turn := 0.0
+if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+    turn -= 1.0
+if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+    turn += 1.0
 ```

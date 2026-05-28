@@ -1,12 +1,12 @@
-# Cleanup Plan - Visual Map Viewer & WASD Movement
+# Cleanup Plan - Continuous Movement
 
 Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm all script files (`grid_visualizer.gd` and `map_viewer.gd`) are under 50 lines.
+- Confirm all GDScript files (`map_data.gd`, `map_parser.gd`, `map_simulation.gd`, `map_viewer.gd`, `test_runner.gd`) are under 50 lines.
 
 ## Documentation Update
-- Document the visual map viewer scene in `.AI/PROJECT.md`.
+- Document continuous movement mechanics and updated JSON config properties in `.AI/PROJECT.md`.
 
 ## Goal Completion
 - Empty `.AI/GOAL.md`.
