@@ -1,24 +1,8 @@
-# Documentation - JSON Parsing in Godot 4.x
+# Documentation - Godot Project Structure Standards
 
-To read and parse a formal JSON file in Godot 4.x:
+Godot recommends organizing files by **feature** rather than by **type** for gameplay entities (e.g., keeping a player's scene, script, and local textures inside `res://player/`), while keeping global, shared, or raw asset files in centralized folders (e.g., `res://shared/` or `res://assets/`).
 
-```gdscript
-var file := FileAccess.open(path, FileAccess.READ)
-if file:
-    var json_text := file.get_as_text()
-    var data = JSON.parse_string(json_text)
-    if data is Dictionary:
-        # Access parameters safely, e.g. data["player_start"]
-```
+## Centralized Folders vs. Feature-Based Folders
 
-## JSON Data Extraction
-- Array of coordinates: `var start_arr = data.get("player_start", [0, 0])`
-- Construct Vector2i from array: `var start_pos = Vector2i(int(start_arr[0]), int(start_arr[1]))`
-- Triggers array:
-  ```gdscript
-  var triggers_arr = data.get("triggers", [])
-  for trig_dict in triggers_arr:
-      var name = trig_dict.get("name", "")
-      var start = Vector2i(trig_dict["start"][0], trig_dict["start"][1])
-      var end = Vector2i(trig_dict["end"][0], trig_dict["end"][1])
-  ```
+- **Feature-Based folders**: A self-contained folder containing everything unique to that entity. E.g., `res://enemy/` contains `enemy.tscn`, `enemy.gd`, and any textures specific to the enemy. This makes entities modular and easily portable.
+- **Centralized Shared folders**: For cross-feature assets used by multiple components. E.g., a shared wood texture, a generic impact sound, or custom global shaders are kept in `res://shared/` subdirectories.

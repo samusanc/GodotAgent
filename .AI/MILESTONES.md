@@ -1,17 +1,11 @@
-# Milestones - Formal JSON & Directory Setup
+# Milestones - Game Assets Directory Setup
 
 Each milestone keeps the project in a working state.
 
-## Milestone 1: Create Game Development Folders
-- Create the directories for sprites, audio, fonts, levels, and players.
+## Milestone 1: Create Game Asset and Shader Folders
+- Create the directories for 3D models, textures, materials, shaders, and scenes.
 - Add `.gitkeep` files to each.
 
-## Milestone 2: Rewrite map-config.json
-- Replace the content of `project/map-config.json` with formal JSON matching the coordinates and triggers from the prototype.
-
-## Milestone 3: Refactor MapParser
-- Update `MapParser._parse_config` in `project/systems/map_parser.gd` to use `JSON.parse_string()`.
-- Ensure the script remains under 50 lines.
-
-## Milestone 4: Verification
-- Run syntax checks and the headless `TestRunner` to verify correct loading and simulation behavior.
+## Milestone 2: Verify & Document Layout
+- Confirm all folders exist.
+- Update `.AI/PROJECT.md` to reflect the complete workspace directory tree structure.

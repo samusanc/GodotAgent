@@ -6,13 +6,19 @@ This is the canonical project context for the Godot 4.x project (GDScript only).
 
 The project code and scenes reside in the `project/` directory (`res://`).
 The standard folders are structured as follows:
+
 - `res://systems/` - Reusable Lego-brick scripts (project-agnostic).
 - `res://autoload/` - Global managers (small, specialized, < 50 lines).
 - `res://resources/` - Custom Resource types and `.tres` data files.
-- `res://shared/` - Cross-feature assets:
-  - `res://shared/sprites/` - Gameplay images and textures.
-  - `res://shared/audio/` - Sound effects and background music.
+- `res://scenes/` - Global or core screens/scenes (e.g. main menu, persistent HUD UI, splash screen).
+- `res://shared/` - Cross-feature shared assets:
+  - `res://shared/sprites/` - Shared gameplay 2D images and textures.
+  - `res://shared/audio/` - Shared sound effects and background music.
   - `res://shared/fonts/` - UI text fonts.
+  - `res://shared/models/` - 3D assets, meshes, and 3D models (FBX/OBJ/GLTF).
+  - `res://shared/textures/` - 2D/3D images used as textures, normal maps, or noise patterns.
+  - `res://shared/materials/` - Pre-configured `.tres` material files (StandardMaterial3D, ShaderMaterial).
+  - `res://shared/shaders/` - Custom shader scripts (`.gdshader`).
 - `res://level/` - Level features, setups, and level scenes.
 - `res://player/` - Player logic, assets, and scenes.
 

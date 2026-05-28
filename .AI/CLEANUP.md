@@ -1,13 +1,12 @@
-# Cleanup Plan - Formal JSON & Directory Setup
+# Cleanup Plan - Game Assets Directory Setup
 
 Post-implementation tasks:
 
 ## Code/Folder Review
-- Confirm all modified files conform to the 50-line limit.
-- Re-run all tests to guarantee no regressions.
+- Confirm all new folders contain `.gitkeep` and are empty otherwise.
 
 ## Documentation Update
-- Update `.AI/PROJECT.md` to document the new JSON structure of the map configuration.
+- Confirm `.AI/PROJECT.md` is updated.
 
 ## Goal Completion
 - Empty `.AI/GOAL.md` to indicate full completion.
