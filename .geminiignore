@@ -1,0 +1,48 @@
+# Files and directories excluded from Gemini context.
+# Syntax follows .gitignore conventions.
+# Edits to this file require restarting the Gemini CLI session.
+
+# Godot generated cache and import data
+.godot/
+.import/
+
+# Binary assets — Gemini cannot use them as text context
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.svg
+*.ico
+*.ogg
+*.wav
+*.mp3
+*.ttf
+*.otf
+*.fnt
+*.glb
+*.gltf
+*.exr
+*.hdr
+
+# Exported builds and intermediates
+/build/
+/exports/
+*.translation
+
+# Archive of completed goals — current GOAL.md is what matters
+.AI/archive/
+
+# Personal/local context that shouldn't bleed into shared context
+GEMINI.local.md
+CLAUDE.local.md
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Git internals (Gemini doesn't need to read these)
+.git/
