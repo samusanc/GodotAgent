@@ -1,31 +1,23 @@
-# Technical Plan - Map Parser & Simulation
+# Technical Plan - Formal JSON & Directory Setup
 
-We will implement a modular, type-safe system to parse grid maps and configs, track player movement, check cell transitability, and detect triggers.
+We will refactor our map configuration loading and set up standard game folders.
 
-## Components to Create
+## Tasks
 
-1. **`res://resources/trigger_data.gd`**
-   - Inherits `Resource`.
-   - Stores trigger name, start coordinate, and end coordinate.
-   - Max 50 lines.
-
-2. **`res://resources/map_data.gd`**
-   - Inherits `Resource`.
-   - Stores grid dimensions, 1D grid array (`grid`), player start, and triggers.
-   - Max 50 lines.
-
-3. **`res://systems/map_parser.gd`**
-   - Reusable parser class.
-   - Reads a map text file from `res://`, processes the grid and `config:` reference, reads the configuration file, and returns a `MapData` resource.
-   - Max 50 lines.
-
-4. **`res://systems/map_simulation.gd`**
-   - Reusable class to simulate player position, handle movement commands, block movement on `1` cells, and check trigger overlaps.
-   - Max 50 lines.
-
-5. **`res://systems/test_runner.gd`**
-   - Headless verification script to load `res://map-example.txt`, parse it, run movements, verify collision blocks, and verify trigger activation.
-   - Max 50 lines.
-
-## Copying Map Files
-- Move `map-example.txt` and `map-config.json` from the root workspace to `project/` directory so they are loaded as resources (`res://`).
+1. **Modify Config File**:
+   - Rewrite `project/map-config.json` as valid JSON.
+2. **Refactor `MapParser`**:
+   - Change `_parse_config` in `project/systems/map_parser.gd` to load the config as a JSON string and parse it using `JSON.parse_string()`.
+   - Maintain the 50-line file limit.
+3. **Generate Folders**:
+   - Create directories:
+     - `project/shared/sprites/`
+     - `project/shared/audio/`
+     - `project/shared/fonts/`
+     - `project/level/`
+     - `project/player/`
+   - Place a `.gitkeep` file in each directory.
+4. **Verification**:
+   - Run the headless test runner to verify everything behaves exactly as before.
+5. **Documentation**:
+   - Provide run and test instructions to the user.

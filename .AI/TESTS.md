@@ -1,29 +1,23 @@
-# Tests - Map Parser & Simulation
+# Tests - Formal JSON & Directory Setup
 
 Verification strategy for the milestones.
 
-## Milestone 1: Setup Assets and Resources
+## Milestone 1: Create Game Development Folders
 - AI-Friendly:
-  - Check file existence of `project/map-example.txt`, `project/map-config.json`.
-  - Check GDScript syntax:
-    `godot --headless --check-only --script project/resources/trigger_data.gd`
-    `godot --headless --check-only --script project/resources/map_data.gd`
+  - Verify folders exist:
+    `test -d project/shared/sprites`
+    `test -d project/shared/audio`
+    `test -d project/shared/fonts`
+    `test -d project/level`
+    `test -d project/player`
 
-## Milestone 2: Implement MapParser
+## Milestone 3: Refactor MapParser
 - AI-Friendly:
-  - Check GDScript syntax:
-    `godot --headless --check-only --script project/systems/map_parser.gd`
+  - Verify syntax:
+    `/home/samusanc/Downloads/godot --headless --check-only --script project/systems/map_parser.gd`
 
-## Milestone 3: Implement MapSimulation
+## Milestone 4: Verification
 - AI-Friendly:
-  - Check GDScript syntax:
-    `godot --headless --check-only --script project/systems/map_simulation.gd`
-
-## Milestone 4: Automated Testing & Verification
-- AI-Friendly:
-  - Run the test runner:
-    `godot --headless --script project/systems/test_runner.gd`
-  - Verify that the simulation correctly:
-    1. Blocks movement into wall cells ('1').
-    2. Allows movement in path cells ('0').
-    3. Triggers signals/events when entering trigger coordinates.
+  - Run the test suite:
+    `/home/samusanc/Downloads/godot --headless --script project/systems/test_runner.gd`
+  - Verify that the output states: `All tests passed successfully!`

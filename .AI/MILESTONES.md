@@ -1,23 +1,17 @@
-# Milestones - Map Parser & Simulation
+# Milestones - Formal JSON & Directory Setup
 
 Each milestone keeps the project in a working state.
 
-## Milestone 1: Setup Assets and Resources
-- Copy `map-example.txt` and `map-config.json` to the `project/` directory.
-- Create `res://resources/trigger_data.gd`.
-- Create `res://resources/map_data.gd`.
+## Milestone 1: Create Game Development Folders
+- Create the directories for sprites, audio, fonts, levels, and players.
+- Add `.gitkeep` files to each.
 
-## Milestone 2: Implement MapParser
-- Create `res://systems/map_parser.gd`.
-- Read and parse map grid, parse config file lines, assemble and return a `MapData`.
-- Enforce the 50-line limit.
+## Milestone 2: Rewrite map-config.json
+- Replace the content of `project/map-config.json` with formal JSON matching the coordinates and triggers from the prototype.
 
-## Milestone 3: Implement MapSimulation
-- Create `res://systems/map_simulation.gd`.
-- Maintain player position, handle grid boundaries and wall checks (`1` vs `0`), trigger detection.
-- Enforce the 50-line limit.
+## Milestone 3: Refactor MapParser
+- Update `MapParser._parse_config` in `project/systems/map_parser.gd` to use `JSON.parse_string()`.
+- Ensure the script remains under 50 lines.
 
-## Milestone 4: Automated Testing & Verification
-- Create `res://systems/test_runner.gd`.
-- Execute headless tests verifying movement blockages and trigger events.
-- Output test reports.
+## Milestone 4: Verification
+- Run syntax checks and the headless `TestRunner` to verify correct loading and simulation behavior.
